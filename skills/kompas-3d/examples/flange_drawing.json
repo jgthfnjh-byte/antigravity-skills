@@ -1,0 +1,26 @@
+{
+  "type": "drawing",
+  "format": "A4",
+  "orientation": "vertical",
+  "stamp": {
+    "title": "ФЛАНЕЦ СОЕДИНИТЕЛЬНЫЙ",
+    "code": "ФЛ.001.00",
+    "org": "Университет",
+    "author": "Инженер"
+  },
+  "elements": [
+    {"type": "circle", "xc": 100, "yc": 150, "radius": 45, "style": "normal"},
+    {"type": "circle", "xc": 100, "yc": 150, "radius": 25, "style": "normal"},
+    {"type": "circle", "xc": 100, "yc": 150, "radius": 35, "style": "axial"},
+    {"type": "circle", "xc": 100, "yc": 185, "radius": 5, "style": "normal"},
+    {"type": "circle", "xc": 100, "yc": 115, "radius": 5, "style": "normal"},
+    {"type": "circle", "xc": 135, "yc": 150, "radius": 5, "style": "normal"},
+    {"type": "circle", "xc": 65, "yc": 150, "radius": 5, "style": "normal"},
+    {"type": "line", "x1": 45, "y1": 150, "x2": 155, "y2": 150, "style": "axial"},
+    {"type": "line", "x1": 100, "y1": 95, "x2": 100, "y2": 205, "style": "axial"},
+    {"type": "dim_diametral", "xc": 100, "yc": 150, "radius": 45, "angle": 45},
+    {"type": "dim_diametral", "xc": 100, "yc": 150, "radius": 25, "angle": 135},
+    {"type": "text", "x": 50, "y": 80, "text": "1. *Размеры для справок.", "height": 3.5},
+    {"type": "text", "x": 50, "y": 70, "text": "2. Неуказанные предельные отклонения: H14, h14, +-IT14/2.", "height": 3.5}
+  ]
+}

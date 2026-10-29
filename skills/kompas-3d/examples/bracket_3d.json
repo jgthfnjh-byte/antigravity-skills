@@ -1,0 +1,24 @@
+{
+  "type": "part",
+  "title": "Кронштейн опорный",
+  "code": "КР.001.00",
+  "operations": [
+    {
+      "type": "extrude",
+      "plane": "XOY",
+      "depth": 15.0,
+      "sketch": [
+        {"type": "rect", "x1": -50, "y1": -30, "x2": 50, "y2": 30}
+      ]
+    },
+    {
+      "type": "cut",
+      "plane": "XOY",
+      "depth": 15.0,
+      "sketch": [
+        {"type": "circle", "xc": -30, "yc": 0, "radius": 6},
+        {"type": "circle", "xc": 30, "yc": 0, "radius": 6}
+      ]
+    }
+  ]
+}
