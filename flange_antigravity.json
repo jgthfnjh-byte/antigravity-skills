@@ -1,0 +1,59 @@
+{
+  "type": "part",
+  "title": "Фланец переходной",
+  "code": "ФЛ.100.015",
+  "material": "Сталь 20 ГОСТ 1050-2013",
+  "operations": [
+    {
+      "type": "extrude",
+      "plane": "XOY",
+      "depth": 15.0,
+      "sketch": [
+        {
+          "type": "rect",
+          "x1": -50.0,
+          "y1": -50.0,
+          "x2": 50.0,
+          "y2": 50.0
+        }
+      ]
+    },
+    {
+      "type": "cut",
+      "plane": "XOY",
+      "depth": 15.0,
+      "sketch": [
+        {
+          "type": "circle",
+          "xc": 0.0,
+          "yc": 0.0,
+          "radius": 20.0
+        },
+        {
+          "type": "circle",
+          "xc": 35.0,
+          "yc": 35.0,
+          "radius": 5.0
+        },
+        {
+          "type": "circle",
+          "xc": -35.0,
+          "yc": 35.0,
+          "radius": 5.0
+        },
+        {
+          "type": "circle",
+          "xc": -35.0,
+          "yc": -35.0,
+          "radius": 5.0
+        },
+        {
+          "type": "circle",
+          "xc": 35.0,
+          "yc": -35.0,
+          "radius": 5.0
+        }
+      ]
+    }
+  ]
+}

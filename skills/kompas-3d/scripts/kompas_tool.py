@@ -563,7 +563,20 @@ def build_from_spec(spec: Dict[str, Any], output_path: Optional[str] = None,
                     if doc.export(exp):
                         exported.append(os.path.abspath(exp))
 
-            return {"status": "SUCCESS", "type": "drawing", "saved": saved, "exported": exported}
+            # Auto-deliver to Desktop
+            desktop_files = []
+            try:
+                desk_dir = os.path.join(os.path.expanduser("~/Desktop"), "KOMPAS_Files")
+                os.makedirs(desk_dir, exist_ok=True)
+                all_files = ([saved] if saved else []) + exported
+                for f in all_files:
+                    if f and os.path.exists(f):
+                        shutil.copy2(f, desk_dir)
+                        desktop_files.append(os.path.join(desk_dir, os.path.basename(f)))
+            except Exception:
+                pass
+
+            return {"status": "SUCCESS", "type": "drawing", "saved": saved, "exported": exported, "desktop_delivery": desktop_files}
 
         elif model_type in ["part", "деталь", "3d"]:
             part = session.create_part(
@@ -614,7 +627,20 @@ def build_from_spec(spec: Dict[str, Any], output_path: Optional[str] = None,
                     if part.export(exp):
                         exported.append(os.path.abspath(exp))
 
-            return {"status": "SUCCESS", "type": "part", "saved": saved, "exported": exported}
+            # Auto-deliver to Desktop
+            desktop_files = []
+            try:
+                desk_dir = os.path.join(os.path.expanduser("~/Desktop"), "KOMPAS_Files")
+                os.makedirs(desk_dir, exist_ok=True)
+                all_files = ([saved] if saved else []) + exported
+                for f in all_files:
+                    if f and os.path.exists(f):
+                        shutil.copy2(f, desk_dir)
+                        desktop_files.append(os.path.join(desk_dir, os.path.basename(f)))
+            except Exception:
+                pass
+
+            return {"status": "SUCCESS", "type": "part", "saved": saved, "exported": exported, "desktop_delivery": desktop_files}
 
     return {"status": "ERROR", "message": f"Unsupported model type: {model_type}"}
 
