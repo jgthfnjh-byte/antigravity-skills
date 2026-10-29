@@ -463,12 +463,17 @@ class PartDoc:
         ext.Update()
         return ext
 
-    def extrude_cut(self, sketch, depth: float = 10.0, direction: str = "normal"):
-        """Extrude cut operation (o3d_cutExtrusion)."""
+    def extrude_cut(self, sketch, depth: float = 10.0, direction: str = "reverse"):
+        """Extrude cut operation (o3d_cutExtrusion). Defaults to dtReverse to cut into base body."""
         exts = self.container.GetExtrusions()
         ext = exts.Add(k_const3d.o3d_cutExtrusion)
         ext.SetProfiles([sketch])
-        dir_val = k_const3d.dtNormal if direction == "normal" else k_const3d.dtReverse
+        if direction == "normal":
+            dir_val = k_const3d.dtNormal
+        elif direction == "both":
+            dir_val = k_const3d.dtBoth
+        else:
+            dir_val = k_const3d.dtReverse
         ext.SetDirection(dir_val)
         ext.SetExtrusionType(True, k_const3d.ksDTValue)
         ext.SetDepth(True, float(depth))
@@ -614,7 +619,8 @@ def build_from_spec(spec: Dict[str, Any], output_path: Optional[str] = None,
                                 h.add_circle(elem["xc"], elem["yc"], elem["radius"])
                             elif e_type in ["rect", "rectangle"]:
                                 h.add_rect(elem["x1"], elem["y1"], elem["x2"], elem["y2"])
-                    part.extrude_cut(sk, depth=depth)
+                    dir_cut = op.get("direction", "reverse")
+                    part.extrude_cut(sk, depth=depth, direction=dir_cut)
 
             saved = None
             if output_path:
